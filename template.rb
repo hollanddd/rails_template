@@ -4,7 +4,9 @@ rvm_setting, ruby_version, app_name = rvm_current.match(/^[^-]+-(([^-@]+).*@(.+)
 create_file '.rvmrc', "rvm use --create #{rvm_setting}"
 
 remove_file 'config/database.yml'
-database_config = File.open('https://raw.github.com/jonallured/rails_template/master/files/database.yml').read.gsub /<app_name>/, app_name
+
+database_file = open('https://raw.github.com/jonallured/rails_template/master/files/database.yml').read
+database_config = database_file.gsub /<app_name>/, app_name
 create_file 'config/database.example.yml', database_config
 
 gem 'thin'
