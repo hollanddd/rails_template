@@ -1,0 +1,15 @@
+global: &global
+  adapter: postgresql
+  encoding: unicode
+  min_messages: warning
+  password:
+  pool: 5
+  username: username
+
+development:
+  database: <app_name>_development
+  <<: *global
+
+test:
+  database: <app_name>_test
+  <<: *global
