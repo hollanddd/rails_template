@@ -9,6 +9,8 @@ database_file = open('https://raw.github.com/jonallured/rails_template/master/fi
 database_config = database_file.gsub /<app_name>/, app_name
 create_file 'config/database.example.yml', database_config
 
+append_file '.gitignore', 'config/database.yml'
+
 gem 'thin'
 gem 'decent_exposure'
 gem 'haml-rails'
@@ -31,3 +33,5 @@ gem_group :test do
 end
 
 append_file 'Gemfile', "ruby '#{ruby_version}'"
+
+git :init
