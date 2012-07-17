@@ -8,6 +8,7 @@ remove_file 'config/database.yml'
 database_file = open('https://raw.github.com/jonallured/rails_template/master/files/database.yml').read
 database_config = database_file.gsub /<app_name>/, app_name
 create_file 'config/database.example.yml', database_config
+create_file 'config/database.yml', database_config
 
 append_file '.gitignore', 'config/database.yml'
 
