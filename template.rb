@@ -12,6 +12,11 @@ create_file 'config/database.yml', database_config
 
 append_file '.gitignore', 'config/database.yml'
 
+%w[deploy pg_sync rspec].each do |task|
+  data = open("https://raw.github.com/jonallured/rake_tasks/master/#{task}.rake").read
+  create_file "lib/tasks/#{task}.rake", data
+end
+
 gem 'thin'
 gem 'decent_exposure'
 gem 'haml-rails'
