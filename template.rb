@@ -13,6 +13,9 @@ create_file 'config/database.yml', database_config
 
 append_file '.gitignore', 'config/database.yml'
 
+remove_file 'README.rdoc'
+create_file 'README.md', "README for #{app_name}"
+
 %w[deploy pg_sync rspec].each do |task|
   data = open("https://raw.github.com/jonallured/rake_tasks/master/#{task}.rake").read
   create_file "lib/tasks/#{task}.rake", data
