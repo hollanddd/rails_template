@@ -1,7 +1,8 @@
-rvm_current = `rvm current`
-rvm_setting, ruby_version, app_name = rvm_current.match(/^[^-]+-(([^-@]+).*@(.+))$/)[1..3]
+app_name = Pathname.new(`pwd`).basename.to_s.strip
+rvm_current = `rvm current`.strip
+ruby_version = rvm_current.split('-')[1]
 
-create_file '.rvmrc', "rvm use --create #{rvm_setting}\nexport HEROKU_APP=#{app_name}-staging"
+create_file '.rvmrc', "rvm use --create #{rvm_current}@#{app_name}\nexport HEROKU_APP=#{app_name}-staging"
 
 remove_file 'config/database.yml'
 
