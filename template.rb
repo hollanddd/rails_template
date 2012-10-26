@@ -6,7 +6,7 @@ create_file '.rvmrc', "rvm use --create #{rvm_current}@#{app_name}\nexport HEROK
 
 remove_file 'config/database.yml'
 
-database_file = open('https://raw.github.com/jonallured/rails_template/master/files/database.yml').read
+database_file = open('https://raw.github.com/hollanddd/rails_template/master/files/database.yml').read
 database_config = database_file.gsub /<app_name>/, app_name
 create_file 'config/database.example.yml', database_config
 create_file 'config/database.yml', database_config
@@ -17,7 +17,7 @@ remove_file 'README.rdoc'
 create_file 'README.md', "README for #{app_name}"
 
 %w[deploy pg_sync rspec].each do |task|
-  data = open("https://raw.github.com/jonallured/rake_tasks/master/#{task}.rake").read
+  data = open("https://raw.github.com/hollanddd/rake_tasks/master/#{task}.rake").read
   create_file "lib/tasks/#{task}.rake", data
 end
 
